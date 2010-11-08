@@ -1,0 +1,27 @@
+<html>
+<head>
+<title>Rolling your own PubSub with DNode!</title>
+<script src="/dnode.js" type="text/javascript"></script>
+<script type="text/javascript">
+    window.onload = function () {
+        DNode.connect(function (remote) {
+            var em = new EventEmitter;
+            
+            em.on('data', function (n) {
+                document.getElementById('output').innerHTML += n + ' ';
+            });
+            
+            remote.subscribe(function () {
+                // browsers don't usually have .bind() yet
+                em.emit.apply(em, arguments);
+            });
+        });
+    };
+</script>
+</head>
+<body>
+
+<div id="output"></div>
+
+</body>
+</html>
