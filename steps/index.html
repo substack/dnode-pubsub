@@ -14,10 +14,8 @@
                 document.getElementById('output').innerHTML += n + ' ';
             });
             
-            remote.subscribe(function () {
-                // browsers don't usually have .bind() yet
-                em.emit.apply(em, arguments);
-            });
+            var emit = em.emit.bind(em);
+            remote.subscribe(emit);
         });
     };
 </script>
