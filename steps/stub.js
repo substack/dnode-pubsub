@@ -1,4 +1,4 @@
-var Hash = require('traverse/hash'); // from my previous blog post!
+var Hash = require('hashish');
 var subs = {};
 
 function publish () {
