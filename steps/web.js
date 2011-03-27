@@ -1,10 +1,13 @@
 var connect = require('connect');
-var webserver = connect.createServer(
-    connect.staticProvider(__dirname)
-).listen(5051);
+var webserver = connect.createServer();
+
+webserver.use(connect.static(__dirname));
+webserver.use(require('browserify')({ require : 'dnode' }));
+
+webserver.listen(5051);
 console.log('http://localhost:5051/');
 
-var Hash = require('traverse/hash'); // from my previous blog post!
+var Hash = require('hashish');
 var subs = {};
 
 function publish () {

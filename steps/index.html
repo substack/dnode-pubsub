@@ -1,10 +1,13 @@
 <html>
 <head>
 <title>Rolling your own PubSub with DNode!</title>
-<script src="/dnode.js" type="text/javascript"></script>
+<script src="/browserify.js" type="text/javascript"></script>
 <script type="text/javascript">
+    var dnode = require('dnode');
+    var EventEmitter = require('events').EventEmitter;
+    
     window.onload = function () {
-        DNode.connect(function (remote) {
+        dnode.connect(function (remote) {
             var em = new EventEmitter;
             
             em.on('data', function (n) {
